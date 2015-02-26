@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "thisprop"
+        }, 
+        "thisprop": {
+            "applicationId": "oR8lLc6Rwxtdnfc70vUA4UTa5gZkk3Zh8xkf2f2A", 
+            "masterKey": "4nVWtPE5tVzrHBwj786fZXwClHiNF2i3TYkqPan9"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}

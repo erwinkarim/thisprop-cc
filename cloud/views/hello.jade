@@ -1,0 +1,7 @@
+extends layout
+block body
+	h1!= message
+	form(method='post', action='/hello')
+		p
+			input(name='message')
+			input.button(type='submit', value='Update Greeting')
