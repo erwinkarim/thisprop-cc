@@ -1,3 +1,4 @@
+Parse.initialize("oR8lLc6Rwxtdnfc70vUA4UTa5gZkk3Zh8xkf2f2A", "Mv1QKomwzfLAXFsSdGcAfBqqZUB6URPWgw8s34Sq");
 
 // These two lines are required to initialize Express in Cloud Code.
 var express = require('express');
@@ -15,6 +16,10 @@ app.get('/hello', function(req, res) {
 });
 
 app.post('/hello', function(req,res){
+	//let's push come random data in
+	var TestObject = Parse.Object.extend('TestObject');
+	var testObject = new TestObject();
+	testObject.save( { random_num: Math.random() });
 	res.render('hello', { message: req.body.message });
 });
 // // Example reading from the request query string of an HTTP get request.
