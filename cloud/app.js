@@ -17,7 +17,7 @@ app.get('/', function(req,res){
 });
 
 app.get('/login-menu', function(req,res){
-	res.render('login-menu', { status:req.query.status });
+	res.render('login-menu', { status:req.query.status, username:req.query.username});
 });
 
 app.get('/hello', function(req, res) {
@@ -28,13 +28,19 @@ app.post('/hello', function(req,res){
 	res.render('hello', { message: req.body.message });
 });
 
-//userlog login successfully
-app.post('/user/session/login', function(req,res){
+app.get('/listings', function(req, res){
+	res.render('listings/index', {});
 });
 
-//user log out
-app.post('/user/session/logout', function(req,res){
-
+app.get('/users/:id', function(req, res){
+	var user = Parse.User.current();
+	var message;
+	if (user){
+		message = 'user is logged in';	
+	} else {
+		message = 'user is not logged in';	
+	}
+	res.render('users/show', {user:req.params.id, message: message});
 });
 
 // Attach the Express app to Cloud Code.
