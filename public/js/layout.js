@@ -19,8 +19,13 @@ window.fbAsyncInit = function() {
         //sometime logged in facebook, but not through is app, so need to register
         console.log('user is null');
         response.status = 'not_authorized';
+      } else {
+        FB.api('/me', { fields: 'name' }, function(response){
+          user.name = response.name;
+          user.save({ name: response.name }, { success: function(user){ console.log('saved user info') } } );
+        });
       }
-      console.log(user);
+      console.log(user.name);
     } else {
       console.log('user not logged to thisprop');
       response.status = 'not_logged_in';
@@ -29,21 +34,20 @@ window.fbAsyncInit = function() {
     console.log('status - ' + response.status);
     
     //update the user menu
-    $.get('/login-menu', { status:response.status, username:'test'}, function(data){
+    $.get('/login-menu', { status:response.status, username:user.name}, function(data){
       $('#user-menu').empty().append(data).ready(function(){
         $('#login-fb').click(function(){
           Parse.FacebookUtils.logIn('public_profile,email', {
             success:function(user){
-              FB.api('/me', { fields: 'name' }, function(response){
-                user.save({ name: response.name }, { success: function(user){ console.log('saved user info') } } ) 
-              });
               console.log('logged into facebook');
+              location.reload();
             }
           });
         });
         $('#logout-fb').click(function(){
           Parse.User.logOut();
           FB.logout();
+          location.reload();
         });
       });
     });
