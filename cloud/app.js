@@ -28,10 +28,16 @@ app.post('/hello', function(req,res){
 	res.render('hello', { message: req.body.message });
 });
 
+//handle the listings
 app.get('/listings', function(req, res){
 	res.render('listings/index', {});
 });
 
+app.get('/listings/:id', function(req,res){
+	res.render('listings/show', {listing:req.params.id}); 
+});
+
+//handle the users
 app.get('/users/:id', function(req, res){
 	var user = Parse.User.current();
 	var message;
@@ -41,6 +47,10 @@ app.get('/users/:id', function(req, res){
 		message = 'user is not logged in';	
 	}
 	res.render('users/show', {user:req.params.id, message: message});
+});
+
+app.get('/users/:id/listings', function(req, res){
+	res.render('listings/user_listings', { user:req.params.id });
 });
 
 // Attach the Express app to Cloud Code.

@@ -34,7 +34,7 @@ window.fbAsyncInit = function() {
     console.log('status - ' + response.status);
     
     //update the user menu
-    $.get('/login-menu', { status:response.status, username:user.name}, function(data){
+    $.get('/login-menu', { status:response.status, username:(user==null ? null : user.name)}, function(data){
       $('#user-menu').empty().append(data).ready(function(){
         $('#login-fb').click(function(){
           Parse.FacebookUtils.logIn('public_profile,email', {
