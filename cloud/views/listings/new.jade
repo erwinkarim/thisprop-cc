@@ -6,44 +6,46 @@ block body
 				div(role='tabpanel')
 					ul.nav.nav-tabs(role='tablist')
 						li.active(role='presentation') 
-							a(data-toggle='tab', role='tab', href='#create-listing-form') 1. Create
+							a#show-create(data-toggle='tab', role='tab', href='#create-listing-form') 1. Create
 						li(role='presentation')	
-							a(data-toggle='tab', role='tab', href='#review-listing') 2. Review
+							a#show-review(data-toggle='tab', role='tab', href='#review-listing') 2. Review
 
 				.tab-content
 					.tab-pane.active#create-listing-form(role='tabpanel')
 						h1 put the new listings form here
-						form
+						form#new-listing-form
 							.form-group
 								label Title
-								input.form-control(type='text', placeholder='Put title here')
+								input#title-input.form-control(type='text', placeholder='Put title here', name='title')
 							.form-group
 								label Address
-								input.form-control(type='text', placeholder='Street, City, Postcode State')
+								input#address-input.form-control(type='text', placeholder='Street, City, Postcode State', name='address')
 							.form-group
 								label Property Type
-								select
-									option(value='Banglo') Banglo
+								select#type-input.form-control(name='listing_type')
+									option(value='banglo') Banglo
+									option(value='semi-detached') Semi-D
+									option(value='link') Link
+									option(value='Flat') Flat
+									option(value='Apartment') Apartment
+									option(value='Condo') Condominum
+									option(value='Service-Residence') Service Residence
 							.form-group
 								label Description
-								textarea.form-control(placeholder='Describe your property')
-							/*
-								do this later
-							.from-group
-								label Photos
-								button.btn.btn-default(type='button') +
-								ul#photo-lists
-									li
-										a
-											img(src='http://placehold.it/120x/120')
-									li
-										a
-											img(src='http://placehold.it/120x/120')
-							*/
+								textarea#description-input.form-control(placeholder='Describe your property', name='description')
 							.form-group
 								button.btn.btn-primary(type='button') Review 
 					.tab-pane#review-listing
 						h1 put review here
+						h4.page-header Title
+						p#title-review title goes here
+						h4.page-header Address
+						p#address-review address goes here
+						h4.page-header Listing Type
+						p#type-review type goes here
+						h4.page-header Description
+						p#description-review description goes here
+						button.btn.btn-deafault(type='button') Back
 						button.btn.btn-primary(type='button') Submit Listing
 block other_scripts
 	script(src='/js/listings.js')
