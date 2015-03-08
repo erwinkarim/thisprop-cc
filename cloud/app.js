@@ -33,6 +33,10 @@ app.get('/listings', function(req, res){
 	res.render('listings/index', {});
 });
 
+app.get('/listings/new', function(req,res){
+	res.render('listings/new', {});
+});
+
 app.get('/listings/:id', function(req,res){
 	res.render('listings/show', {listing:req.params.id}); 
 });

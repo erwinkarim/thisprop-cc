@@ -25,7 +25,7 @@ window.fbAsyncInit = function() {
           user.save({ name: response.name }, { success: function(user){ console.log('saved user info') } } );
         });
       }
-      console.log(user.name);
+      console.log('user.name = ' + user.name);
     } else {
       console.log('user not logged to thisprop');
       response.status = 'not_logged_in';

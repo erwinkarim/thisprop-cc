@@ -1,0 +1,49 @@
+extends ../layout
+block body
+	.container
+		.row
+			.col-xs-12.col-md-6
+				div(role='tabpanel')
+					ul.nav.nav-tabs(role='tablist')
+						li.active(role='presentation') 
+							a(data-toggle='tab', role='tab', href='#create-listing-form') 1. Create
+						li(role='presentation')	
+							a(data-toggle='tab', role='tab', href='#review-listing') 2. Review
+
+				.tab-content
+					.tab-pane.active#create-listing-form(role='tabpanel')
+						h1 put the new listings form here
+						form
+							.form-group
+								label Title
+								input.form-control(type='text', placeholder='Put title here')
+							.form-group
+								label Address
+								input.form-control(type='text', placeholder='Street, City, Postcode State')
+							.form-group
+								label Property Type
+								select
+									option(value='Banglo') Banglo
+							.form-group
+								label Description
+								textarea.form-control(placeholder='Describe your property')
+							/*
+								do this later
+							.from-group
+								label Photos
+								button.btn.btn-default(type='button') +
+								ul#photo-lists
+									li
+										a
+											img(src='http://placehold.it/120x/120')
+									li
+										a
+											img(src='http://placehold.it/120x/120')
+							*/
+							.form-group
+								button.btn.btn-primary(type='button') Review 
+					.tab-pane#review-listing
+						h1 put review here
+						button.btn.btn-primary(type='button') Submit Listing
+block other_scripts
+	script(src='/js/listings.js')
